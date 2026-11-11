@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#260d20">
+<title>Для Нели — с днём рождения!</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Great+Vibes&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --pink: #ffb4d1;
+  --gold: #f4d6a0;
+  --white: #fff8fc;
+  --border: rgba(255,255,255,.20);
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  color: var(--white);
+  font-family: 'Manrope', sans-serif;
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(180,65,120,.38), transparent 45%),
+    radial-gradient(ellipse at 85% 75%, rgba(110,45,100,.42), transparent 45%),
+    linear-gradient(145deg, #160b19, #351329 50%, #170b1d);
+}
+
+button {
+  font: inherit;
+}
+
+.background-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.background-glow::before,
+.background-glow::after {
+  content: "";
+  position: absolute;
+  width: 330px;
+  height: 330px;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .25;
+  background: #ff80b5;
+  animation: glow 12s ease-in-out infinite alternate;
+}
+
+.background-glow::before {
+  top: 8%;
+  left: -100px;
+}
+
+.background-glow::after {
+  bottom: 5%;
+  right: -100px;
+  background: #bd83ff;
+  animation-delay: -5s;
+}
+
+@keyframes glow {
+  to {
+    transform: translate(80px, 60px) scale(1.25);
+  }
+}
+
+.page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 30px 18px 70px;
+}
+
+.glass {
+  background: linear-gradient(
+    135deg,
+    rgba(255,255,255,.15),
+    rgba(255,255,255,.045)
+  );
+  border: 1px solid var(--border);
+  box-shadow:
+    0 20px 65px rgba(0,0,0,.25),
+    inset 0 1px 1px rgba(255,255,255,.20);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+}
+
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(22px, env(safe-area-inset-top))
+    max(18px, env(safe-area-inset-right))
+    max(22px, env(safe-area-inset-bottom))
+    max(18px, env(safe-area-inset-left));
+  background: rgba(20,7,20,.65);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.intro.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-card {
+  width: min(100%, 480px);
+  padding: 42px 27px;
+  text-align: center;
+  border-radius: 30px;
+  position: relative;
+  overflow: hidden;
+}
+
+.intro-card::before,
+.letter::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  transform: skewX(-20deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.10),
+    transparent
+  );
+  animation: shine 7s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine {
+  0%, 65% { left: -100%; }
+  100% { left: 150%; }
+}
+
+.small-heading {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  margin-bottom: 23px;
+}
+
+.intro h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(43px, 10vw, 65px);
+  font-weight: 500;
+  line-height: 1;
+  margin: 0 0 20px;
+}
+
+.script {
+  font-family: 'Great Vibes', cursive;
+  color: var(--pink);
+  font-size: 38px;
+}
+
+.intro p {
+  color: rgba(255,248,252,.78);
+  line-height: 1.8;
+  font-size: 14px;
+  margin: 20px auto 27px;
+  max-width: 330px;
+}
+.primary-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 310px;
+  min-height: 52px;
+  border: 1px solid rgba(255,255,255,.35);
+  color: white;
+  padding: 14px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  background: linear-gradient(
+    135deg,
+    rgba(255,190,218,.30),
+    rgba(255,255,255,.10)
+  );
+  box-shadow: 0 8px 30px rgba(255,130,180,.15);
+  transition: transform .3s, background .3s;
+}
+
+.primary-button:active {
+  transform: scale(.97);
+}
+
+.date {
+  margin-top: 25px;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: rgba(255,255,255,.55);
+}
+
+
+.main-content {
+  width: min(100%, 680px);
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 1.2s ease, transform 1.2s ease;
+}
+
+.main-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.top-label {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 4px;
+  margin-top: 25px;
+  text-transform: uppercase;
+}
+
+.main-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(55px, 12vw, 85px);
+  font-weight: 500;
+  margin: 12px 0 0;
+  line-height: 1;
+}
+
+.subtitle {
+  color: rgba(255,248,252,.7);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-top: 13px;
+}
+
+.heart-main {
+  width: 90px;
+  height: 90px;
+  margin: 32px auto 15px;
+  filter: drop-shadow(0 0 20px rgba(255,145,190,.5));
+  animation: heartbeat 2.2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.10); }
+}
+
+.description {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 23px;
+  color: rgba(255,248,252,.85);
+  margin: 15px 0 35px;
+}
+
+
+
+.envelope-area {
+  perspective: 1000px;
+  width: min(100%, 430px);
+  margin: 0 auto;
+}
+
+.envelope {
+  width: 100%;
+  aspect-ratio: 1.87 / 1;
+  min-height: 180px;
+  max-height: 230px;
+  position: relative;
+  cursor: pointer;
+  border-radius: 18px;
+  background: linear-gradient(145deg, #d78eae, #87476e);
+  box-shadow: 0 25px 65px rgba(0,0,0,.30);
+  transition: transform .5s;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+@media (hover: hover) {
+  .envelope:hover {
+    transform: translateY(-5px);
+  }
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.22), transparent 55%);
+}
+
+.envelope-front {
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: linear-gradient(145deg, #d995b5, #87476e);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.envelope-front::before,
+.envelope-front::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.envelope-front::before {
+  left: 0;
+  border-width: 115px 0 0 215px;
+  border-color: transparent transparent transparent rgba(255,255,255,.13);
+}
+
+.envelope-front::after {
+  right: 0;
+  border-width: 115px 215px 0 0;
+  border-color: rgba(255,255,255,.10) transparent transparent transparent;
+}
+
+.envelope-flap {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  background: linear-gradient(145deg, #f1b7d0, #b36b91);
+  clip-path: polygon(0 0, 100% 0, 50% 65%);
+  transform-origin: top;
+  transition: transform .9s ease;
+}
+
+.envelope.open .envelope-flap {
+  transform: rotateX(180deg);
+  z-index: 0;
+}
+
+.envelope-name {
+  position: absolute;
+  z-index: 3;
+  top: 45%;
+  left: 0;
+  width: 100%;
+  font-family: 'Great Vibes', cursive;
+  font-size: clamp(30px, 8vw, 37px);
+  color: #fff7fc;
+  text-shadow: 0 2px 12px rgba(80,20,55,.25);
+}
+
+.seal {
+  position: absolute;
+  z-index: 4;
+  left: 50%;
+  top: 65%;
+  transform: translateX(-50%);
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #fff4e4;
+  background: linear-gradient(145deg, #f6d9a5, #bd8950);
+  box-shadow: 0 5px 18px rgba(0,0,0,.2);
+  transition: opacity .4s;
+}
+
+.envelope.open .seal {
+  opacity: 0;
+}
+.envelope-hint {
+  margin-top: 17px;
+  color: rgba(255,255,255,.65);
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+
+
+.letter {
+  display: none;
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 560px);
+  margin: 30px auto 0;
+  padding: 35px 27px;
+  border-radius: 25px;
+  text-align: left;
+  animation: letterIn 1s ease both;
+}
+
+.letter.show {
+  display: block;
+}
+
+@keyframes letterIn {
+  from {
+    opacity: 0;
+    transform: translateY(25px) scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.letter-title {
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 600;
+  color: #ffe0ed;
+  margin: 0 0 25px;
+}
+
+.letter p {
+  position: relative;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  line-height: 1.65;
+  color: rgba(255,248,252,.91);
+  margin: 0 0 17px;
+}
+
+.signature {
+  margin-top: 28px;
+  text-align: right;
+  font-family: 'Great Vibes', cursive;
+  font-size: 35px;
+  color: var(--gold);
+}
+
+
+.final-card {
+  width: min(100%, 560px);
+  margin: 30px auto 0;
+  padding: 30px 22px;
+  border-radius: 25px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.final-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.final-card h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 32px;
+  font-weight: 500;
+  color: #ffe0ed;
+  margin: 0 0 12px;
+}
+
+.final-card p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 21px;
+  line-height: 1.5;
+  color: rgba(255,248,252,.8);
+}
+
+.final-signature {
+  font-family: 'Great Vibes', cursive;
+  color: var(--gold);
+  font-size: 34px;
+  margin-top: 20px;
+}
+
+.footer {
+  margin-top: 45px;
+  color: rgba(255,255,255,.55);
+  font-size: 12px;
+  letter-spacing: 1px;
+  padding-bottom: 20px;
+}
+
+
+
+.floating-heart {
+  position: fixed;
+  bottom: -35px;
+  z-index: 5;
+  pointer-events: none;
+  animation: floatUp linear forwards;
+  filter: drop-shadow(0 0 8px rgba(255,145,190,.4));
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+  12% { opacity: .8; }
+  85% { opacity: .65; }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+
+@media (max-width: 600px) {
+  .page {
+    padding:
+      max(18px, env(safe-area-inset-top))
+      16px
+      max(40px, env(safe-area-inset-bottom));
+  }
+
+  .intro-card {
+    padding: 35px 21px;
+    border-radius: 25px;
+  }
+
+  .small-heading {
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+  }
+
+  .intro h1 {
+    font-size: clamp(42px, 12vw, 58px);
+  }
+
+  .script {
+    font-size: 34px;
+  }
+
+  .intro p {
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  .primary-button {
+    max-width: 100%;
+    min-height: 54px;
+    font-size: 13px;
+  }
+
+  .date {
+    font-size: 10px;
+    letter-spacing: 3px;
+  }
+
+  .top-label {
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-top: 18px;
+  }
+
+  .main-title {
+    font-size: clamp(52px, 15vw, 72px);
+  }
+
+  .subtitle {
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  .heart-main {
+    width: 75px;
+    height: 75px;
+    margin: 25px auto 12px;
+  }
+
+  .description {
+    font-size: 20px;
+    line-height: 1.35;
+    margin: 12px 0 27px;
+  }
+
+  .envelope-area {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  .envelope {
+    min-height: 175px;
+    border-radius: 16px;
+  }
+
+  .envelope-front {
+    border-radius: 16px;
+  }
+
+  .envelope-front::before {
+    border-width: 90px 0 0 50%;
+  }
+
+  .envelope-front::after {
+    border-width: 90px 50% 0 0;
+  }
+
+  .envelope-name {
+    font-size: 34px;
+  }
+
+  .seal {
+    width: 39px;
+    height: 39px;
+  }
+
+  .envelope-hint {
+    font-size: 11px;
+    line-height: 1.5;
+    padding: 0 8px;
+  }
+
+  .letter {
+    width: 100%;
+    margin-top: 25px;
+    padding: 27px 20px;
+    border-radius: 21px;
+  }
+
+  .letter-title {
+    font-size: clamp(29px, 8vw, 36px);
+    line-height: 1.2;
+    margin-bottom: 23px;
+  }
+.letter p {
+    font-size: 19px;
+    line-height: 1.55;
+    margin-bottom: 16px;
+  }
+
+  .signature {
+    font-size: 32px;
+    margin-top: 25px;
+  }
+
+  .final-card {
+    width: 100%;
+    margin-top: 23px;
+    padding: 26px 18px;
+    border-radius: 21px;
+  }
+
+  .final-card h2 {
+    font-size: 29px;
+  }
+
+  .final-card p {
+    font-size: 19px;
+    line-height: 1.5;
+  }
+
+  .final-signature {
+    font-size: 31px;
+  }
+
+  .footer {
+    margin-top: 35px;
+    font-size: 10px;
+    line-height: 1.6;
+    padding-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 360px) {
+  .intro-card {
+    padding: 29px 16px;
+  }
+
+  .intro h1 {
+    font-size: 40px;
+  }
+
+  .primary-button {
+    font-size: 12px;
+    padding: 12px;
+  }
+
+  .letter {
+    padding: 24px 16px;
+  }
+
+  .letter p {
+    font-size: 18px;
+  }
+
+  .envelope {
+    min-height: 155px;
+  }
+
+  .seal {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .page {
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  .main-content {
+    max-width: 620px;
+  }
+}
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="background-glow"></div>
+
+<section class="intro" id="intro">
+  <div class="intro-card glass">
+    <div class="small-heading">Небольшой подарок</div>
+    <div class="script">С особенным днём</div>
+    <h1>Для тебя, Неля...</h1>
+    <p>
+      Нелечка, сегодня для тебя приготовлено
+      кое-что очень особенное.
+    </p>
+    <button class="primary-button" onclick="begin()">
+      ♡ Нажмите, чтобы продолжить ♡
+    </button>
+    <div class="date">14 · 11 · 2026</div>
+  </div>
+</section>
+
+<main class="page">
+  <div class="main-content" id="mainContent">
+
+    <div class="top-label">Самые тёплые пожелания</div>
+    <h1 class="main-title">Для Нели</h1>
+    <div class="subtitle">Твой особенный день · 13 лет</div>
+
+    <svg class="heart-main" viewBox="0 0 100 100" aria-hidden="true">
+      <defs>
+        <linearGradient id="heartGradient" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="#ffe0ed"/>
+          <stop offset="55%" stop-color="#ff9dc5"/>
+          <stop offset="100%" stop-color="#d65d9b"/>
+        </linearGradient>
+      </defs>
+      <path d="M50 88 C42 80 8 57 8 32 C8 5 42 1 50 27 C58 1 92 5 92 32 C92 57 58 80 50 88Z"
+            fill="url(#heartGradient)"/>
+    </svg>
+
+    <div class="description">
+      Один маленький конверт. И много искренних слов...
+    </div>
+
+    <div class="envelope-area">
+      <div class="envelope" id="envelope"
+           role="button" tabindex="0"
+           aria-label="Открыть письмо"
+           onclick="openLetter()"
+           onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openLetter();}">
+        <div class="envelope-front"></div>
+        <div class="envelope-flap"></div>
+        <div class="envelope-name">Нелечка</div>
+        <div class="seal">♡</div>
+      </div>
+      <div class="envelope-hint" id="envelopeHint">
+        Нажми на конверт, чтобы открыть письмо
+      </div>
+    </div>
+
+    <article class="letter glass" id="letter">
+      <h2 class="letter-title">С днём рождения, Неля!</h2>
+
+      <p>Нелечка, поздравляю тебя с твоим 13-летием! ♡</p>
+
+      <p>
+        За это короткое время ты стала для меня очень приятным
+        и особенным человеком. Мне действительно приятно с тобой
+        общаться, узнавать тебя и проводить время в разговорах.
+      </p>
+
+      <p>
+        Ты очень добрая, милая и красивая. Надеюсь, что сегодня
+        ты будешь много улыбаться, радоваться и чувствовать,
+        насколько этот день особенный.
+      </p>
+<p>
+        Желаю тебе огромного счастья, крепкого здоровья,
+        исполнения желаний, успехов во всём и побольше
+        прекрасных моментов. Пусть рядом всегда будут люди,
+        с которыми тебе легко и хорошо.
+      </p>
+
+      <p>
+        Я рад, что наши пути пересеклись. Спасибо тебе
+        за приятное общение и за то, что ты такая, какая есть.
+      </p>
+
+      <p>
+        Нелечка, пусть твои мечты постепенно становятся реальностью,
+        а каждый новый день приносит что-нибудь хорошее.
+      </p>
+
+      <p>
+        С твоим 13-летием, джан! Оставайся такой же особенной.
+      </p>
+
+      <div class="signature">С теплом, Левон ♡</div>
+    </article>
+
+    <section class="final-card glass" id="finalCard">
+      <h2>Для тебя, Нелечка ♡</h2>
+      <p>
+        Пусть сбываются мечты, случаются приятные сюрпризы,
+        а впереди будет ещё много счастливых дней.
+      </p>
+      <div class="final-signature">С любовью от Левона</div>
+    </section>
+
+    <footer class="footer">
+      Создано с теплом специально для Нели ♡
+    </footer>
+
+  </div>
+</main>
+
+<!-- Музыка теперь лежит рядом с index.html -->
+<audio id="music" loop preload="none">
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+let letterOpened = false;
+let heartTimer = null;
+
+function begin() {
+  const intro = document.getElementById('intro');
+  const main = document.getElementById('mainContent');
+  const music = document.getElementById('music');
+
+  intro.classList.add('hidden');
+
+  setTimeout(() => {
+    main.classList.add('visible');
+  }, 250);
+
+
+  music.play().catch(() => {});
+
+  if (!heartTimer) {
+    heartTimer = setInterval(makeHeart, 850);
+  }
+}
+
+function openLetter() {
+  if (letterOpened) return;
+  letterOpened = true;
+
+  const envelope = document.getElementById('envelope');
+  const letter = document.getElementById('letter');
+  const hint = document.getElementById('envelopeHint');
+
+  envelope.classList.add('open');
+  hint.textContent = 'Для тебя, Нелечка ♡';
+
+  setTimeout(() => {
+    letter.classList.add('show');
+
+    setTimeout(() => {
+      letter.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
+
+      setTimeout(() => {
+        document.getElementById('finalCard').classList.add('show');
+      }, 700);
+    }, 200);
+  }, 650);
+}
+
+function makeHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'floating-heart';
+
+  const svg = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'svg'
+  );
+
+  svg.setAttribute('viewBox', '0 0 100 100');
+  svg.setAttribute('width', '25');
+  svg.setAttribute('height', '25');
+
+  const path = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'path'
+  );
+
+  path.setAttribute(
+    'd',
+    'M50 88 C42 80 8 57 8 32 C8 5 42 1 50 27 C58 1 92 5 92 32 C92 57 58 80 50 88Z'
+  );
+
+  path.setAttribute('fill', '#ffb4d1');
+
+  svg.appendChild(path);
+  heart.appendChild(svg);
+
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = (7 + Math.random() * 5) + 's';
+  heart.style.opacity = String(.4 + Math.random() * .4);
+  heart.style.transform = 'scale(' + (.6 + Math.random() * .8) + ')';
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => heart.remove(), 13000);
+}
+</script>
+
+</body>
+</html>
